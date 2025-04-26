@@ -52,12 +52,13 @@ ros2 topic pub /cmd_vel_diff geometry_msgs/msg/Twist "{linear: {x: 0.0, y: 0.0, 
 
 ## Possible Improvements
 - Pure rotation behavior limitations:
-The current oscillation method (back-and-forth motion) used to simulate pure rotation introduces slight lateral drift and instability.
+The current oscillation method (back-and-forth motion) used to simulate pure rotation introduces lateral drift and has low maneuverability.
 This is because:
     - The robot moves physically forward and backward instead of rotating on the spot.
 
     - The resulting rotation speed is lower than expected for high angular velocity commands.
-A better solution could involve dynamically adjusting the oscillation frequency or designing a more sophisticated motion model.
+
+    A better solution could involve dynamically adjusting the oscillation frequency or designing a more sophisticated motion model.
 
 - No systemd service installation:
 I have no experience with systemd, and due to time constraints I did not understand how to manage automatic node execution inside a Docker container, because Docker is designed to run a single main process, and system services are generally not used in containerized environments.
